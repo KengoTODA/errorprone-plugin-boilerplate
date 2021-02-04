@@ -13,7 +13,7 @@ apply from: "$rootDir/gradle/spotless.gradle"
 repositories { mavenCentral() }
 
 ext {
-    junitVersion = '5.7.0'
+    junitVersion = '5.7.1'
     errorproneVersion = '2.5.1'
     autoServiceVersion = '1.0-rc7'
 }
