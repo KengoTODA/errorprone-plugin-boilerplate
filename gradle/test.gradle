@@ -1,9 +1,8 @@
 test {
     useJUnitPlatform()
-}
-
-jacoco {
-    toolVersion = "0.8.5"
+    // Starting in JDK 16 the default disallows access to internal javac APIs
+    // https://github.com/google/error-prone/pull/2015
+    jvmArgs += '--illegal-access=permit'
 }
 
 tasks.check.dependsOn 'jacocoTestReport'
