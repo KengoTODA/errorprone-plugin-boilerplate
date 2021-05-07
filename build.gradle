@@ -6,20 +6,12 @@ plugins {
     id 'net.ltgt.errorprone' version '2.0.1'
 }
 
-apply from: "$rootDir/gradle/test.gradle"
-apply from: "$rootDir/gradle/analysis.gradle"
-apply from: "$rootDir/gradle/spotless.gradle"
-
 repositories { mavenCentral() }
 
 ext {
     junitVersion = '5.7.1'
     errorproneVersion = '2.6.0'
     autoServiceVersion = '1.0'
-}
-
-tasks.withType(JavaCompile) {
-    options.release = 11
 }
 
 dependencies {
@@ -30,6 +22,36 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testImplementation "com.google.errorprone:error_prone_test_helpers:${errorproneVersion}"
     errorprone "com.google.errorprone:error_prone_core:${errorproneVersion}"
+}
+
+tasks.withType(JavaCompile) {
+    options.release = 11
+    // disable warnings in generated code by immutables
+    // https://github.com/google/error-prone/issues/329
+    options.errorprone.disableWarningsInGeneratedCode = true
+}
+
+test {
+    useJUnitPlatform()
+    // Starting in JDK 16 the default disallows access to internal javac APIs
+    // https://github.com/google/error-prone/pull/2015
+    jvmArgs += '--illegal-access=permit'
+}
+
+tasks.named('check').configure {
+    dependsOn 'jacocoTestReport'
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+    }
+    groovyGradle {
+        target '**/*.gradle'
+        greclipse()
+        indentWithSpaces()
+    }
 }
 
 defaultTasks 'spotlessApply', 'build'
