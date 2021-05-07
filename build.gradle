@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'jacoco'
-    id 'com.diffplug.gradle.spotless' version '5.11.1'
+    id 'com.diffplug.spotless' version '5.12.4'
     id 'net.ltgt.errorprone' version '2.0.1'
 }
 
@@ -18,8 +18,8 @@ ext {
     autoServiceVersion = '1.0-rc7'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
+tasks.withType(JavaCompile) {
+    options.release = 11
 }
 
 dependencies {
