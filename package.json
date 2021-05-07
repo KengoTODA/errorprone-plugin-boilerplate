@@ -8,9 +8,6 @@
     "prettier": "2.2.1",
     "semantic-release": "17.3.9"
   },
-  "scripts": {
-    "semantic-release": "semantic-release"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "./gradlew spotlessApply && lint-staged",
