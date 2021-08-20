@@ -10,7 +10,7 @@ repositories { mavenCentral() }
 
 ext {
     junitVersion = '5.7.2'
-    errorproneVersion = '2.8.1'
+    errorproneVersion = '2.9.0'
     autoServiceVersion = '1.0'
 }
 
