@@ -6,7 +6,7 @@
     "husky": "^7.0.2",
     "lint-staged": "11.1.2",
     "prettier": "2.3.2",
-    "semantic-release": "^17.4.6"
+    "semantic-release": "^17.4.7"
   },
   "lint-staged": {
     "*.{md,json}": [
