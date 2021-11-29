@@ -9,7 +9,7 @@ plugins {
 repositories { mavenCentral() }
 
 ext {
-    junitVersion = '5.8.1'
+    junitVersion = '5.8.2'
     errorproneVersion = '2.10.0'
     autoServiceVersion = '1.0.1'
 }
