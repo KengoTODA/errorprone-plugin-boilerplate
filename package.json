@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "commitlint": "16.0.1",
+    "commitlint": "16.0.2",
     "conventional-changelog-conventionalcommits": "4.6.3",
     "gradle-semantic-release-plugin": "1.6.2",
     "husky": "^7.0.4",
