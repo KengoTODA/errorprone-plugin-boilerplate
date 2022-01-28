@@ -13,7 +13,6 @@ import com.sun.source.tree.MethodTree;
 
 @AutoService(BugChecker.class)
 @BugPattern(
-    name = "FooBarNamingCheck",
     summary = "Foo is dead, long live Bar!",
     tags = {"SAMPLE"},
     severity = WARNING)
