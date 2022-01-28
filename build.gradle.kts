@@ -15,13 +15,13 @@ val errorproneVersion = "2.11.0"
 val autoServiceVersion = "1.0.1"
 
 dependencies {
-    compileOnly("com.google.errorprone:error_prone_check_api:${errorproneVersion}")
-    compileOnly("com.google.auto.service:auto-service:${autoServiceVersion}")
-    annotationProcessor("com.google.auto.service:auto-service:${autoServiceVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testImplementation("com.google.errorprone:error_prone_test_helpers:${errorproneVersion}")
-    errorprone("com.google.errorprone:error_prone_core:${errorproneVersion}")
+    compileOnly("com.google.errorprone:error_prone_check_api:$errorproneVersion")
+    compileOnly("com.google.auto.service:auto-service:$autoServiceVersion")
+    annotationProcessor("com.google.auto.service:auto-service:$autoServiceVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testImplementation("com.google.errorprone:error_prone_test_helpers:$errorproneVersion")
+    errorprone("com.google.errorprone:error_prone_core:$errorproneVersion")
 }
 
 val exportsArgs = listOf(
@@ -68,9 +68,9 @@ spotless {
         removeUnusedImports()
         googleJavaFormat()
     }
-    groovyGradle {
-        target("**/*.gradle")
-        greclipse()
+    kotlinGradle {
+        target("**/*.gradle.kts")
+        ktlint()
         indentWithSpaces()
     }
 }
