@@ -16,5 +16,10 @@ jobs:
           java-version: 17
       - name: Build with Gradle
         run: ./gradlew build
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: reports
+          path: build/reports
 
 # TODO: run semantic-release
