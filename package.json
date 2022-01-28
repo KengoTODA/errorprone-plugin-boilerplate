@@ -30,7 +30,7 @@
     ]
   },
   "engines": {
-    "node": "^14.16.0"
+    "node": "^16.13.2"
   },
   "scripts": {
     "prepare": "husky install"
