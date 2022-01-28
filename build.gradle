@@ -54,4 +54,10 @@ spotless {
     }
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 defaultTasks 'spotlessApply', 'build'
