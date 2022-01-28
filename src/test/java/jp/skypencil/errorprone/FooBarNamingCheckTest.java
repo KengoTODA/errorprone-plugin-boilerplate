@@ -2,7 +2,6 @@ package jp.skypencil.errorprone;
 
 import com.google.errorprone.BugCheckerRefactoringTestHelper;
 import com.google.errorprone.CompilationTestHelper;
-import com.google.errorprone.bugpatterns.BugChecker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -10,9 +9,8 @@ import org.junit.jupiter.api.Test;
 class FooBarNamingCheckTest {
   @Test
   void renameFooMethod() {
-    BugChecker checker = new FooBarNamingCheck();
     BugCheckerRefactoringTestHelper helper =
-        BugCheckerRefactoringTestHelper.newInstance(checker, getClass());
+        BugCheckerRefactoringTestHelper.newInstance(FooBarNamingCheck.class, getClass());
     helper
         .addInputLines("Foo.java", "public class Foo { void foo() {} }")
         .addOutputLines("Foo.java", "public class Foo { void bar() {} }")
