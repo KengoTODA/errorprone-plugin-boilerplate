@@ -43,24 +43,43 @@ val exportsArgs = listOf(
     "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
 )
 
-tasks.withType<JavaCompile>() {
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
-    options.compilerArgs.addAll(exportsArgs)
-    // disable warnings in generated code by immutables
-    // https://github.com/google/error-prone/issues/329
-    options.errorprone.disableWarningsInGeneratedCode.set(true)
+val addExportsFile = file("$buildDir/tmp/javadoc/add-exports.txt")
+val createJavadocOptionFile by tasks.registering {
+    outputs.file(addExportsFile)
+    doLast {
+        addExportsFile.printWriter().use { writer ->
+            exportsArgs.chunked(2).forEach {
+                writer.println("${it[0]}=${it[1]}")
+            }
+        }
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
-    // Starting in JDK 16 the default disallows access to internal javac APIs
-    // https://github.com/google/error-prone/pull/2015
-    jvmArgs = exportsArgs
-}
+tasks {
+    withType<JavaCompile>() {
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
+        options.compilerArgs.addAll(exportsArgs)
+        // disable warnings in generated code by immutables
+        // https://github.com/google/error-prone/issues/329
+        options.errorprone.disableWarningsInGeneratedCode.set(true)
+    }
 
-tasks.named("check").configure {
-    dependsOn("jacocoTestReport")
+    withType<Javadoc> {
+        dependsOn(createJavadocOptionFile)
+        options.optionFiles(addExportsFile)
+    }
+
+    test {
+        useJUnitPlatform()
+        // Starting in JDK 16 the default disallows access to internal javac APIs
+        // https://github.com/google/error-prone/pull/2015
+        jvmArgs = exportsArgs
+    }
+
+    check {
+        dependsOn("jacocoTestReport")
+    }
 }
 
 spotless {
@@ -79,6 +98,8 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
+    withSourcesJar()
+    withJavadocJar()
 }
 
 defaultTasks("spotlessApply", "build")
