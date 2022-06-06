@@ -4,7 +4,7 @@ plugins {
     `java-library`
     `maven-publish`
     `jacoco`
-    id("com.diffplug.spotless") version "6.6.1"
+    id("com.diffplug.spotless") version "6.7.0"
     id("net.ltgt.errorprone") version "2.0.2"
 }
 
