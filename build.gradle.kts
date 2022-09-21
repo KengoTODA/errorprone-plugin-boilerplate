@@ -10,7 +10,7 @@ plugins {
 
 repositories { mavenCentral() }
 
-val junitVersion = "5.9.0"
+val junitVersion = "5.9.1"
 val errorproneVersion = "2.15.0"
 val autoServiceVersion = "1.0.1"
 
