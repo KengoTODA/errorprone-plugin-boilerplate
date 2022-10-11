@@ -40,7 +40,7 @@ val exportsArgs = listOf(
     "--add-exports",
     "jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
     "--add-exports",
-    "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+    "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED"
 )
 
 val addExportsFile = file("$buildDir/tmp/javadoc/add-exports.txt")
