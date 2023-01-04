@@ -1,4 +1,4 @@
-plugins { id("com.gradle.enterprise") version "3.11.4" }
+plugins { id("com.gradle.enterprise") version "3.12.2" }
 
 rootProject.name = "errorprone-plugin-boilerplate"
 
