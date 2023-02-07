@@ -20,8 +20,8 @@ public class FooBarNamingCheck extends BugChecker implements MethodTreeMatcher {
   @Override
   public Description matchMethod(MethodTree tree, VisitorState state) {
     if (tree.getName().contentEquals("foo")) {
-      return Description.builder(
-              tree, "FooBarNamingCheck", null, WARNING, "foo() should be renamed to bar()")
+      return buildDescription(tree)
+          .setMessage("foo() should be renamed to bar()")
           .addFix(SuggestedFixes.renameMethod(tree, "bar", state))
           .build();
     }
