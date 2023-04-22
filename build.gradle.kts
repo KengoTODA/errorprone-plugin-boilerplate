@@ -5,7 +5,7 @@ plugins {
     `maven-publish`
     `jacoco`
     id("com.diffplug.spotless") version "6.18.0"
-    id("net.ltgt.errorprone") version "3.0.1"
+    id("net.ltgt.errorprone") version "3.1.0"
 }
 
 repositories { mavenCentral() }
