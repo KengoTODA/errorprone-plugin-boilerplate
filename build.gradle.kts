@@ -11,7 +11,7 @@ plugins {
 repositories { mavenCentral() }
 
 val junitVersion = "5.9.3"
-val errorproneVersion = "2.19.0"
+val errorproneVersion = "2.19.1"
 val autoServiceVersion = "1.0.1"
 
 dependencies {
