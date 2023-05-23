@@ -12,7 +12,7 @@ repositories { mavenCentral() }
 
 val junitVersion = "5.9.3"
 val errorproneVersion = "2.19.1"
-val autoServiceVersion = "1.0.1"
+val autoServiceVersion = "1.1.0"
 
 dependencies {
     compileOnly("com.google.errorprone:error_prone_check_api:$errorproneVersion")
